@@ -5,7 +5,6 @@ import net.runelite.api.Player;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
@@ -18,7 +17,7 @@ public class WiseOldMan {
     {
         URL url = new URL(String.format(URL, player.getName()));
         String playerNameNonNull = Objects.requireNonNull(player.getName());
-        String playerName = String.format("username=%s", URLEncoder.encode(playerNameNonNull, StandardCharsets.UTF_8));
+        String playerName = String.format("username=%s", playerNameNonNull);
         byte[] postDataBytes = playerName.getBytes(StandardCharsets.UTF_8);
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
